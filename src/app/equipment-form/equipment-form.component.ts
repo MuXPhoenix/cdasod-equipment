@@ -44,6 +44,7 @@ export class EquipmentFormComponent implements OnInit {
 
   send_times: number = 0;  //记录页面点击发送的次数
   select_IP_times: number = 0;  //记录页面点击发送查询本地ip的次数
+  send_setting_tip : number = 0;
 
   serial_flag: string  = "close";
   serial_title: string  = '打开串口';
@@ -64,11 +65,13 @@ export class EquipmentFormComponent implements OnInit {
   dns : string = '1.0.0.0';//DNS
   sp;  //定义一个全局变量，接收创建的端口
 
-
   i3otp_id : number = 0;
   msg : string = '';
 
   i3otpInfo : Array<any> = [];
+
+  //给方瑜发送setting请求后，装写方瑜给我返回的串口信息
+  sensorList : Array<any> = [];
   constructor(
       private http:Http,
       private router : Router,
@@ -92,8 +95,14 @@ export class EquipmentFormComponent implements OnInit {
       });
     });
 
+    setTimeout(function(){
+      that.open_serial();
+      that.send_setting_tips();
+    },2000);
 
   }
+
+
 
   ngOnInit() {
     this.getI3otpInfo();
@@ -204,6 +213,18 @@ export class EquipmentFormComponent implements OnInit {
   }
 
 
+
+  //进入页面就给方瑜发送设置的串口请求
+  send_setting_tips() {
+    console.log('this.send_setting_tip');
+    console.log(this.send_setting_tip);
+    //监听meterReading事件 获取数据
+    this.send_setting_tip++;
+    //命令手动发送条件
+    let data = 'setting';
+    this.serial_read_write(data);
+  }
+
   //本地ip设置
   post_info() {
     console.log('this.send_times');
@@ -212,7 +233,6 @@ export class EquipmentFormComponent implements OnInit {
     this.send_times++;
     //命令手动发送条件
     let data = [];
-
     data.push(13,0,136, 0, 0);
     let ip_ = this.IP.split('.');
     for(let c = 0; c<ip_.length;c++){
@@ -303,9 +323,13 @@ export class EquipmentFormComponent implements OnInit {
           if (this.select_IP_times == 1) {//第一次进行发送，此时打开读写同时打开监听
             this.write_read(write_data); //端口已经创建，直接读写就可以，因为上一次创建端口时已经打开了端口，若此时继续打开端口，sp.on（'open',callback）内部的代码不会执行
           } else {
-            //已经打开读监听了，如果继续打开，发送多次之后会出现“(node) warning: possible EventEmitter memory leak detected. 11 data listeners added. Use emitter.setMaxListeners() to increase limit.”的警告
-            //所以此时不需要再次打开监听，只需要进行数据发送就可以了。
-            this.serial_write(write_data);
+            if (this.send_setting_tip == 1) {//第一次进行发送，此时打开读写同时打开监听
+              this.write_read(write_data); //端口已经创建，直接读写就可以，因为上一次创建端口时已经打开了端口，若此时继续打开端口，sp.on（'open',callback）内部的代码不会执行
+            } else {
+              //已经打开读监听了，如果继续打开，发送多次之后会出现“(node) warning: possible EventEmitter memory leak detected. 11 data listeners added. Use emitter.setMaxListeners() to increase limit.”的警告
+              //所以此时不需要再次打开监听，只需要进行数据发送就可以了。
+              this.serial_write(write_data);
+            }
           }
         }
       }
@@ -337,13 +361,19 @@ export class EquipmentFormComponent implements OnInit {
 
   /****************************读串口************************************************/
   serial_read() {
-  let that = this;
-  that.sp.on('data', function (info) {
-    // that.message += '\r\n' + info;
-    // that.message += '\r\n接收数据字节长度：' + info.length;
-    return info;
-  });
-}
+    let that = this;
+    that.sp.on('data', function (info) {
+      // that.message += '\r\n' + info;
+      // that.message += '\r\n接收数据字节长度：' + info.length;
+      console.log('info:-----~~~');
+      console.log(info);
+      let infos = JSON.parse(info+'');
+      if(infos['type'] == 'setting'){
+        that.sensorList = infos['tag'];
+      }
+      // return info;
+    });
+  }
 
   /****************************写串口************************************************/
   serial_write(write_data) {
@@ -381,6 +411,15 @@ export class EquipmentFormComponent implements OnInit {
     } else {
       this.post_info();//调用ajax推送
     }
+  }
+
+  //给sensorList加入tag变量
+  decodeList(){
+    let list =  this.sensorList;
+    list.forEach((val, idx, array) => {
+      this.sensorList[idx]['tag'] = '';
+    });
+    console.log(this.sensorList);
   }
 
 

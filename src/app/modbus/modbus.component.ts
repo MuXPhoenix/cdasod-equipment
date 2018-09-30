@@ -22,6 +22,8 @@ export class ModbusComponent implements OnInit {
   parity: string  = 'none';//获取校验位字节数
   sp;  //定义一个全局变量，接收创建的端口
 
+  modbusList : Array<any> = [];
+
   msg : Array<any> = [];
   constructor(private router:Router) {
     let that = this;
@@ -36,11 +38,6 @@ export class ModbusComponent implements OnInit {
 
     setTimeout(function(){
       that.open_serial();
-      // that.sp.on('data', function (info) {
-      //   console.log('接收到的信息是：');
-      //   console.log(info);
-      //   that.msg = info;
-      // });
       that.post_info();
     },2000);
   }
@@ -113,6 +110,13 @@ export class ModbusComponent implements OnInit {
       // that.message += '\r\n' + info;
       // that.message += '\r\n接收数据字节长度：' + info.length;
       // return info;
+      console.log("info:-----");
+      console.log(info+'');
+      // console.log(isNaN(info['type']));
+      // if(isNaN(info['type'])){
+      // }
+      // that.modbusList = JSON.parse(info+'');
+      // that.modbusList = info+'';
       that.msg = info;
     });
   }
