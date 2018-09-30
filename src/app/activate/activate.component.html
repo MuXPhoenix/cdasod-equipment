@@ -1,0 +1,118 @@
+<a (click)="logout()">退出登录</a>
+<!---激活设备-->
+<div class="panel" [ngStyle]="{'display':isShow}">
+  <div class="panel-center">
+    <header >
+      <h2>激活设备</h2>
+    </header>
+    <form   class="smart-form mgb20">
+      <fieldset>
+        <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <section>
+            <label class="label txt-color-blue">激活码<span class="asterisk-color">*</span></label>
+            <label class="input">
+              <!--输入后显示激活码正确或错误——默认无-->
+              <!--<i class="icon-append fa fa-check-circle text-primary "></i>-->
+              <i class="icon-append fa fa-times-circle color-red"></i>
+              <input type="text"  placeholder="输入激活码" [(ngModel)]="activation" [ngModelOptions]="{standalone: true}">
+            </label>
+          </section>
+        </div>
+        <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-20 text-left">
+          <button class="btn btn-save btn-xs " type="button" (click)="editI3otpStatus('edit')">
+            <span class="hidden-mobile">激活</span>
+            <!--（正在激活中，请耐心等待......）-->
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+
+<!--设备设置-->
+
+<!--<app-equipment-list></app-equipment-list>-->
+<div class="panel">
+  <div class="panel-center">
+    <header >
+      <h2>设备列表</h2>
+    </header>
+    <form class="navbar-form navbar-left"  novalidate="" role="search">
+      <div class="form-group pdlr-4">
+        <button type="button" class="btn btn-success" (click)="editI3otpStatus('show')">添加激活码</button>
+      </div>
+      <div class="form-group pdlr-4">
+        <button type="button" class="btn btn-warning" (click)="goSettingPage()">修改</button>
+      </div>
+      <!--<div class="form-group pdlr-4">-->
+        <!--<button type="button" class="btn btn-success">详情</button>-->
+      <!--</div>-->
+      <div class="form-group pdlr-4">
+        <button type="button" class="btn btn-danger" (click)="deleteI3otp('all')">批量删除</button>
+      </div>
+
+    </form>
+    <form class="navbar-form navbar-left"  role="search">
+      <div class="form-group pdlr-4">
+        <input class="form-control " maxlength="15" [(ngModel)]="keyword" [ngModelOptions]="{standalone: true}" name="keyword" placeholder="请输入搜索内容" type="text">
+      </div>
+      <div class="form-group pdlr-4">
+        <button class="btn btn-default" type="submit" (click)="getI3otpList(1)">
+          搜索
+        </button>
+      </div>
+    </form>
+    <table class="table table-striped smart-form table-height-20">
+      <thead>
+      <tr>
+        <th>
+          <label class="checkbox mt-8">
+            <input name="checkbox-inline" type="checkbox" [checked]="check" (change)="changeCheckAll($event)">
+            <i></i>
+          </label>
+        </th>
+        <th>产品ID</th>
+        <th>产品名称</th>
+        <th>产品类型 </th>
+        <th>绑定地址 </th>
+        <th>生产日期 </th>
+        <th>设备状态 </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let il of i3otpList.result?.data" (click)="getId(il.i3otp_id)">
+        <td>
+          <label class="checkbox">
+            <input type="checkbox" value="{{ il.i3otp_id }}" [checked]="selects[il.i3otp_id]" (change)="handle($event)">
+            <i></i>
+          </label>
+        </td>
+        <td>{{ il.i3otp_pid }}</td>
+        <td>{{ il.i3otp_name }}</td>
+        <td>{{ il.category_desc }}</td>
+        <td>{{ il.i3otp_address }}</td>
+        <td>{{ il.i3otp_production_date }}</td>
+        <td [ngSwitch]="il.i3otp_status">
+          <span class="label-unknown " *ngSwitchCase="0">未激活</span>
+          <span class="label-normal" *ngSwitchCase="1">使用中</span>
+          <span class="label-maintain" *ngSwitchCase="2">返厂维修</span>
+          <span class="label-invalid" *ngSwitchCase="3">报废</span>
+          <span class="label-invalid" *ngSwitchCase="4">客户删除</span>
+          <span class="label-unknown" *ngSwitchDefault>未激活</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <ul class="pagination pagination-sm">
+        <li *ngFor="let p of i3otpList?.result?.page" class="{{p.class}}">
+          <a (click)="pagination(p.value)" *ngIf="p.method=='method'">{{p.text}}</a>
+          <a *ngIf="p.method==''">{{p.text}}</a>
+        </li>
+      </ul>
+      <p> <span>共{{i3otpList.result?.total}}条</span></p>
+    </div>
+  </div>
+</div>
+

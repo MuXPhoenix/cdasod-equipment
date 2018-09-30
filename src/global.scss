@@ -1,0 +1,19 @@
+@import "assets/css/_common.scss";
+@import "assets/css/_main.scss";
+//@import "assets/css/_component.scss";
+//@import "assets/css/_bootstrap.min.scss";
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), local('Raleway-Regular'), url('./assets/fonts/Raleway-Regular.woff2') format('woff2');
+}
+
+body{
+  font-family: 'Raleway', sans-serif;
+}
+
+
+
+

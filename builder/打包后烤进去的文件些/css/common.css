@@ -1,0 +1,280 @@
+.bg-gray{
+  background-color: rgba(0,0,0,.05);
+  padding: 10px!important;
+  margin: 10px 0!important;
+  border-radius: 4px;
+}
+
+/*传感器*/
+.sensor{
+  background-color: rgba(0,0,0,.05);
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+.sensor p{
+  padding: 12px 0;
+}
+.sensor p span{
+  padding: 6px 10px;
+  margin: 0 8px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 18px;
+}
+.sensor-span{
+  color:#fff;
+  background-color:#169af6;
+  font-weight:600;
+}
+
+
+/*背景文本颜色*/
+
+
+.text-primary {
+  color: #169af6 !important;
+}
+.text-success {
+  color: #60C060 !important;
+}
+.text-info {
+  color: #5DC4EA !important;
+}
+.text-warning {
+  color: #fcad37 !important;
+}
+.text-danger {
+  color: #ED5B56 !important;
+}
+
+.txt-color-white{
+  color: #fff!important;
+}
+.text-color-black{
+  color:#333;
+}
+.txt-color-blue {
+  color: #3782e7!important
+}
+.txt-color-blueLight {
+  color: #92a2a8!important
+}
+
+.txt-color-blueDark {
+  color: #4c4f53!important
+}
+
+.txt-color-green {
+  color: #356e35!important
+}
+.txt-color-greenbrigh{
+  color:  #40ac2b!important
+}
+.color-green{
+  color:#008000!important;
+}
+
+.txt-color-greenLight {
+  color: #739e73!important
+}
+
+.txt-color-greenDark {
+  color: #496949!important
+}
+.txt-color-greenNormal{
+  color: #5b835b!important
+}
+.txt-color-red {
+  color: #F44336!important
+}
+.color-red{
+  color:#F44336!important;
+}
+.txt-color-yellow {
+  color: #b09b5b!important
+}
+.color-yellow{
+  color:#dda008!important;
+}
+.txt-color-yellowMing{
+  color: #ffd860!important
+}
+.txt-color-orange {
+  color: #b19a6b!important
+}
+
+.txt-color-orangeDark {
+  color: #a57225!important
+}
+
+.txt-color-pink {
+  color: #ac5287!important
+}
+
+.txt-color-pinkDark {
+  color: #a8829f!important
+}
+
+.txt-color-purple {
+  color: #6e587a!important
+}
+
+.txt-color-darken {
+  color: #404040!important
+}
+
+.txt-color-lighten {
+  color: #d5e7ec!important
+}
+
+.txt-color-white {
+  color: #fff!important
+}
+
+.txt-color-grayDark {
+  color: #525252!important
+}
+
+.txt-color-magenta {
+  color: #6e3671!important
+}
+
+.txt-color-teal {
+  color: #568a89!important
+}
+
+.txt-color-redLight {
+  color: #a65858!important
+}
+.txt-color-grey {
+  color: #ccc!important
+}
+.text-danger{
+  color: #ed5565;
+}
+.text-info {
+  color: #23c6c8;
+}
+.text-blove {
+  color: #169af6;
+}
+
+.bg-color-blove {
+  background-color: #169af6!important;
+}
+
+.bg-color-blue {
+  background-color: #57889c!important
+}
+
+.bg-color-blueLight {
+  background-color: #92a2a8!important
+}
+
+.bg-color-blueDark {
+  background-color: #4c4f53!important
+}
+
+.bg-color-green {
+  background-color: #356e35!important
+}
+
+.bg-color-greenLight {
+  background-color: #71843f!important
+}
+
+
+.bg-color-greenDark {
+  background-color: #496949!important
+}
+
+.bg-color-red {
+  background-color: #a90329!important
+}
+.bg-color-lightBlue{
+  background-color: #cad8e5!important;
+}
+.bg-color-yellow {
+  background-color: #b09b5b!important
+}
+
+.bg-color-orange {
+  background-color: #c79121!important
+}
+
+.bg-color-orangeDark {
+  background-color: #a57225!important
+}
+
+.bg-color-pink {
+  background-color: #ac5287!important
+}
+
+.bg-color-pinkDark {
+  background-color: #a8829f!important
+}
+
+.bg-color-purple {
+  background-color: #6e587a!important
+}
+
+.bg-color-darken {
+  background-color: #404040!important
+}
+
+.bg-color-lighten {
+  background-color: #d5e7ec!important
+}
+
+.bg-color-white {
+  background-color: #fff!important
+}
+
+.bg-color-grayDark {
+  background-color: #525252!important
+}
+
+.bg-color-magenta {
+  background-color: #6e3671!important
+}
+
+.bg-color-teal {
+  background-color: #568a89!important
+}
+.bg-color-greenbrigh{
+  background-color:  #40ac2b!important
+}
+
+.bg-color-redLight {
+  background-color: #a65858!important
+}
+.bo-color-info{
+  border: 2px solid #23c6c8!important;
+}
+.bo-color-orange{
+  border: 2px solid #c79121!important;
+}
+.bo-color-blue{
+  border: 2px solid #169af6!important;
+}
+.bo-color-grey {
+  border: 2px solid #ccc!important;
+}
+.bg-transparent{
+  background: rgba(0, 0, 0, 0.6);
+}
+
+
+/*文本内容区域*/
+.text-align-center,.text-center {
+  text-align: center!important
+}
+
+.text-align-left,.text-left {
+  text-align: left!important
+}
+
+.text-align-right,.text-right {
+  text-align: right!important
+}

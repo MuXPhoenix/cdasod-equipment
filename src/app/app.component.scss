@@ -1,0 +1,188 @@
+:host {
+  margin: 0;
+  padding: 0;
+
+  .head{
+    width: 100%;
+    margin-bottom: 40px;
+
+    img {
+      margin: auto;
+      display: block;
+      width: 25%;
+    }
+
+    h1{
+      text-align: center;
+      color: #DC1E34;
+    }
+  }
+
+  .container{
+    width: 100%;
+    padding-top: 15px;
+  }
+}
+
+
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+  height: 660px;
+  position:relative;
+}
+#container{
+  width: 955px;
+  height: 800px;
+  background: #F6F6F6;
+  margin:20px auto ;
+  border-radius: 5px;
+  position: relative;
+  background:rgba(255,255,255,0.3);
+  box-shadow: 0px 0px 5px #177D58;/*��Ӱ ��һ��ֵ����ʾ��ˮƽ����ƫ���� Ϊ0ʱ���Ҷ��У�����0����ƫ��
+                                             �ڶ���ֵ����ʾ����ֱ�����ƫ������Ϊ0���¶���ƫ�ƣ�����0ʱ����ƫ��
+                                             ������ֵ��ͶӰ��Χ
+                                             ���ĸ�ֵ����Ӱ��ɫ*/
+}
+.nav{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 32px;
+  margin-left: 5px;
+}
+#title{
+  height: 45px;
+  width: 954px;
+  margin-left: 20px;
+  border-bottom: 1px solid black;
+  position:absolute;
+  top: 0px;
+  right: 0px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.ifError {
+  border: 1px solid #D72911
+}
+#option{
+  width: 200px;
+  height:450px;
+  border:1px solid gray;
+  border-radius: 5px;
+  background: white;
+  padding: 5px;
+  position:absolute;
+  bottom: 8px;
+  left: 15px;
+  top:52px;
+}
+#send{
+  border: 1px solid green;
+  border-radius: 5px;
+  width:710px;
+  height: 400px;
+  right: 15px;
+  bottom: 8px;
+  position: absolute;
+  padding: 5px 10px;
+  background: white;
+}
+.show_message{
+  width: 710px;
+  height: 310px;
+  position:absolute;
+  right: 15px;
+  top: 55px;
+  border:1px solid black;
+  border-radius: 5px;
+  background: rgba(246,246,246,0.7);
+}
+#message{
+  height: 275px;
+  width: 700px;
+  border: 1px solid black;
+  position: absolute;
+  right: 20px;
+  top: 85px;
+  background: white;
+  overflow: auto;
+}
+
+#button{
+  position: absolute;
+  bottom: 12px;
+  right: 40px;
+}
+#logo{
+  height:30px;
+  width:30px;
+  position: absolute;
+  left: 15px;
+  top: 10px;
+}
+#company_name{
+  position:absolute;
+  left: 15px;
+  top: -10px;
+  line-height: 45px;
+}
+#ser_operation{
+  position:absolute;
+  height: 40px;
+  width: 130px;
+  left: 15px;
+  bottom: 380px;
+  padding: auto 10px;
+}
+
+#ser_setting{
+  width: 200px;
+  height: 220px;
+  position:absolute;
+  bottom: 8px;
+  /*left: 230px;*/
+  border:1px solid black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px;
+}
+#setting{
+  position:absolute;
+  bottom:50px;
+  left: 0;
+}
+#set_change{
+  position:absolute;
+  bottom:20px;
+  right: 20px;
+}
+#serial_status{
+  height: 30px;
+  width: 30px;
+  position:absolute;
+  left: 130px;
+  bottom:5px;
+}
+.show_set{
+  height: 100px;
+  width: 400px;
+  position:absolute;
+  right: 20px;
+  top: 0px;
+}
+#clear_set{
+  position:absolute;
+  right: 30px;
+  margin: 3px;
+}
+
+#copyright{
+  height: 20px;
+  width: 476px;
+  position: absolute;
+  left: 450px;
+  bottom: 30px;
+}

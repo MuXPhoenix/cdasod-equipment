@@ -1,0 +1,171 @@
+<div id="extr-page">
+  <header id="header" class="">
+
+    <div id="logo-group">
+      <span id="logo"> <img src="../../assets/img/logo.png" alt="I3OT"> </span>
+    </div>
+
+    <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">需要一个新帐户吗?</span> <a (click)="goPage()" class="btn btn-danger">注册账户</a> </span>
+
+  </header>
+  <div id="main-center" role="main" class="animated fadeInDown">
+
+    <div id="content" class="container">
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+          <h1 class="text-primary login-header-big">I3oT一体化办公云平台</h1>
+
+          <div class="hero">
+            <div class="pull-left login-desc-box-l">
+            </div>
+            <img src="../../assets/img/login-img.png" class="pull-right display-image" alt="" style="width:400px">
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h5 class="about-heading">关于</h5>
+
+              <p>
+                版权所有 © 2015-2018 成都矿易帮信息科技有限公司     蜀ICP备16000670号-1
+              </p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h5 class="about-heading">联系我们</h5>
+
+              <p>
+                单位地址：四川省成都市下南大街59号世代锦江国际酒店25楼
+                如有任何意见与建议请写信至：i3ot@kuangyibang.com
+              </p>
+              <h5 class=" txt-color-red login-header-big">演示账号</h5>
+
+              <p>
+                企业登录：（客户ID:demo 用户ID：ux9528 密码：123456）
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+          <div class="well no-padding">
+
+            <ul class="nav nav-tabs text-align-center" id="myTab">
+              <li class="active" style="width: 50%;"><a data-toggle="tab" href="#ios" >企业登录</a></li>
+
+              <li style="width: 50%;" class="">
+                <a data-toggle="tab" href="#home">
+                  个人登录
+                </a>
+              </li>
+
+
+            </ul>
+            <div class="tab-content" id="myTabContent">
+
+              <div class="tab-pane" id="home">
+                <form class="smart-form client-form ng-untouched ng-pristine" >
+                  <fieldset>
+
+                    <section>
+                      <label class="label">用户名或手机号码</label>
+                      <label class="input"> <i class="icon-append fa fa-user"></i>
+                        <input class="form-control ng-untouched ng-pristine"  placeholder="请输入用户名或手机号码" required="" type="text">
+                      </label>
+                    </section>
+
+                    <section>
+                      <label class="label">密码</label>
+                      <label class="input"> <i class="icon-append fa fa-lock"></i>
+                        <input class="form-control ng-untouched ng-pristine"   name="password" placeholder="请输入密码" type="password" >
+                        <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i>密码最小长度是6</b>
+
+                      </label>
+                      <div class="note">
+                        <a>找回密码</a>
+                      </div>
+                    </section>
+                    <section>
+                      <label class="checkbox">
+                        <input checked="" name="remember" type="checkbox">
+                        <i></i>记住密码，下次自动登录</label>
+                    </section>
+
+                    <p class="txt-color-red">暂不开放</p>
+                  </fieldset>
+
+
+
+
+                  <footer>
+                    <button class="btn btn-primary" disabled="">
+                      登录
+                    </button>
+                  </footer>
+                </form>
+
+              </div>
+              <div class="tab-pane active" id="ios">
+                <form class="smart-form client-form ng-untouched ng-pristine ng-invalid" (ngSubmit)="onSubmit(myForm.value, myForm.valid)" #myForm="ngForm" novalidate="">
+                  <fieldset>
+                    <section>
+                      <label class="label">客户ID</label>
+                      <label class="input"> <i class="icon-append fa fa-user"></i>
+                        <input name="cNumber"  placeholder="请输入客户ID"  ngModel required type="text" class="ng-untouched ng-pristine ng-invalid">
+                      </label>
+                    </section>
+
+                    <section>
+                      <label class="label">用户ID</label>
+                      <label class="input"> <i class="icon-append fa fa-user"></i>
+                        <input placeholder="请输入用户ID" ngModel required name="uNumber" type="text" class="ng-untouched ng-pristine ng-invalid">
+                      </label>
+                    </section>
+
+                    <section>
+                      <label class="label">密码</label>
+                      <label class="input"> <i class="icon-append fa fa-lock"></i>
+                        <input type="password" name="password" ngModel minlength="6" class="ng-untouched ng-pristine ng-valid">
+                        <b [hidden]="!myForm.form.hasError('minlength','password')" class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i>密码最小长度是6</b>
+
+
+                      </label>
+                      <div class="note">
+                        <a >找回密码</a>
+                      </div>
+                    </section>
+                    <section>
+                      <label class="checkbox">
+                        <input name="remember" checked type="checkbox">
+                        <i></i>记住密码，下次自动登录</label>
+                    </section>
+                  </fieldset>
+                  <footer>
+                    <button class="btn btn-primary" [disabled]="!myForm.form.valid">
+                      登录
+                    </button>
+                  </footer>
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+
+          <h5 class="text-center"> -使用第三方账号 -</h5>
+          <ul class="list-inline text-center icon-set">
+            <li>
+              <a (click)="(null)" ><i class="icon-set_wechat"></i></a>
+            </li>
+            <li>
+              <a (click)="(null)" ><i class="icon-set_nailing"></i></a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
