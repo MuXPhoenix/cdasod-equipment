@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {GlobalService} from "../shared/global.service";
 import {CRC,ToCRC16} from '../shared/crc';
 import { Buffer } from 'buffer';
+import {isObject} from "rxjs/internal/util/isObject";
 
 const serialPort = require( "electron" ).remote.require( "serialport" );
 @Component({
@@ -41,6 +42,7 @@ export class EquipmentFormComponent implements OnInit {
   sensor_time_f : string = '';
   sensor_unit_f : string = '';
   sensor_formula_f : string = '';
+  equipment_IP_address:string = '';
 
   send_times: number = 0;  //记录页面点击发送的次数
   select_IP_times: number = 0;  //记录页面点击发送查询本地ip的次数
@@ -120,6 +122,8 @@ export class EquipmentFormComponent implements OnInit {
           this.equipment_name= data['result']['equipment_name'];
           this.buy_u_id = data['result']['buy_u_id'];
           this.equipment_address = data['result']['equipment_address'];
+
+          this.equipment_IP_address = data['result']['equipment_IP_address'];
 
           if(data['result']['sensor_info'].length > 1) {
             this.sensor_a = data['result']['sensor_infos']['sensor_a'];
@@ -296,6 +300,8 @@ export class EquipmentFormComponent implements OnInit {
   //打开串口
   open_serial() {
     //.SerialPort
+    this.serial_flag = 'open';
+    this.serial_title = '串口已打开';
     this.sp = new serialPort(this.com_num, {
       baudRate: this.baudrate,  //波特率设置
       dataBits: this.databits,  //数据位
@@ -307,92 +313,104 @@ export class EquipmentFormComponent implements OnInit {
   }
   /*********************************串口数据发送和接收***********************************************/
   serial_read_write(write_data)  {  //串口操作
-  console.log(this.serial_flag);
-  if (this.serial_flag != 'close') {
-    //sp是用来记录创建的serialPort的
-    if ((typeof this.sp) != 'undefined') {
-      if (this.sp.path != this.com_num){  //sp有数据，且sp记录打开的串口号和即将创建的串口号不同
+    console.log(this.serial_flag);
+    if (this.serial_flag != 'close') {
+      //sp是用来记录创建的serialPort的
+      if ((typeof this.sp) != 'undefined') {
+        if (this.sp.path != this.com_num){  //sp有数据，且sp记录打开的串口号和即将创建的串口号不同
 
-        this.open_serial();  //打开端口
-        this.open_wr(write_data); //新创建的端口必须要先打开端口（sp.on('open',callback)）才能进行数据读写
-      } else {   //这种情况就是打开串口之后一直进行发送操作
-        console.log(this.send_times);
-        if (this.send_times == 1) {//第一次进行发送，此时打开读写同时打开监听
-          this.write_read(write_data); //端口已经创建，直接读写就可以，因为上一次创建端口时已经打开了端口，若此时继续打开端口，sp.on（'open',callback）内部的代码不会执行
-        } else {
-          if (this.select_IP_times == 1) {//第一次进行发送，此时打开读写同时打开监听
+          this.open_serial();  //打开端口
+          this.open_wr(write_data); //新创建的端口必须要先打开端口（sp.on('open',callback)）才能进行数据读写
+        } else {   //这种情况就是打开串口之后一直进行发送操作
+          console.log(this.send_times);
+          if (this.send_times == 1) {//第一次进行发送，此时打开读写同时打开监听
             this.write_read(write_data); //端口已经创建，直接读写就可以，因为上一次创建端口时已经打开了端口，若此时继续打开端口，sp.on（'open',callback）内部的代码不会执行
           } else {
-            if (this.send_setting_tip == 1) {//第一次进行发送，此时打开读写同时打开监听
+            if (this.select_IP_times == 1) {//第一次进行发送，此时打开读写同时打开监听
               this.write_read(write_data); //端口已经创建，直接读写就可以，因为上一次创建端口时已经打开了端口，若此时继续打开端口，sp.on（'open',callback）内部的代码不会执行
             } else {
-              //已经打开读监听了，如果继续打开，发送多次之后会出现“(node) warning: possible EventEmitter memory leak detected. 11 data listeners added. Use emitter.setMaxListeners() to increase limit.”的警告
-              //所以此时不需要再次打开监听，只需要进行数据发送就可以了。
-              this.serial_write(write_data);
+              if (this.send_setting_tip == 1) {//第一次进行发送，此时打开读写同时打开监听
+                this.write_read(write_data); //端口已经创建，直接读写就可以，因为上一次创建端口时已经打开了端口，若此时继续打开端口，sp.on（'open',callback）内部的代码不会执行
+              } else {
+                //已经打开读监听了，如果继续打开，发送多次之后会出现“(node) warning: possible EventEmitter memory leak detected. 11 data listeners added. Use emitter.setMaxListeners() to increase limit.”的警告
+                //所以此时不需要再次打开监听，只需要进行数据发送就可以了。
+                this.serial_write(write_data);
+              }
             }
           }
         }
+      } else {  //sp没有数据，则直接打开串口
+        this.open_serial();
+        this.open_wr(write_data);
       }
-    } else {  //sp没有数据，则直接打开串口
-      this.open_serial();
-      this.open_wr(write_data);
     }
   }
-}
 
   /************************************打开串口并读写数据*********************************/
   open_wr(write_data) {
-  this.sp.on("open", function (err) {
-    if (err) {
-      console.log(err + "打开串口出错，请重试");
-    } else {
-      console.log('串口已经打开2');
-      this.serial_read();
-      this.serial_write(write_data);
-    }
-  });
-}
+    this.sp.on("open", function (err) {
+      if (err) {
+        console.log(err + "打开串口出错，请重试");
+      } else {
+        console.log('串口已经打开2');
+        this.serial_read();
+        this.serial_write(write_data);
+      }
+    });
+  }
 
   /*****************************************读写数据***************************************/
   write_read(write_data) {
-  this.serial_read();
-  this.serial_write(write_data);
-}
+    this.serial_read();
+    this.serial_write(write_data);
+  }
 
   /****************************读串口************************************************/
   serial_read() {
     let that = this;
+    let ret = '';
     that.sp.on('data', function (info) {
-      // that.message += '\r\n' + info;
-      // that.message += '\r\n接收数据字节长度：' + info.length;
-      console.log('info:-----~~~');
-      console.log(info);
-      let infos = JSON.parse(info+'');
-      if(infos['type'] == 'setting'){
-        that.sensorList = infos['tag'];
+      ret += info+'';
+      if(info == 'success IP'){
+        that.getI3otpInfo();
+      }else if(info == 'fail IP'){
+        console.log('获取IP失败');
+      }else{
+
+        setTimeout(function(){
+          let infos = JSON.parse(ret);
+          console.log("3000-了----");
+          console.log(infos);
+          console.log(isObject(infos));
+          if(isObject(infos) && infos['type'] == 'setting'){
+            that.sensorList = infos['tag'];
+
+            console.log("sensorList::----");
+            console.log(that.sensorList);
+          }
+        },3000);
       }
-      // return info;
     });
   }
 
   /****************************写串口************************************************/
   serial_write(write_data) {
-  let buf_once = new Buffer(write_data, this.send_setting);
+    let buf_once = new Buffer(write_data, this.send_setting);
 
-  let that = this;
-  that.sp.write(buf_once, function (err, results) {
-    if (err) {
-      // console.log('err ' + err);
-      return err;
-    } else {
-      // that.message += '\r\n发送数据：' + write_data.toLocaleUpperCase();
-      // that.message += '\r\n发送数据字节长度： ' + results;
-      // console.log('发送数据:' + write_data.toLocaleUpperCase());
-      // console.log('发送数据字节长度： ' + results);  //发出去的数据字节长度
-      return write_data.toLocaleUpperCase();
-    }
-  });
-}
+    let that = this;
+    that.sp.write(buf_once, function (err, results) {
+      if (err) {
+        // console.log('err ' + err);
+        return err;
+      } else {
+        // that.message += '\r\n发送数据：' + write_data.toLocaleUpperCase();
+        // that.message += '\r\n发送数据字节长度： ' + results;
+        // console.log('发送数据:' + write_data.toLocaleUpperCase());
+        // console.log('发送数据字节长度： ' + results);  //发出去的数据字节长度
+        return write_data.toLocaleUpperCase();
+      }
+    });
+  }
 
 
   /**

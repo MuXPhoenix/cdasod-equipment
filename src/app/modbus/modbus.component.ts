@@ -42,36 +42,56 @@ export class ModbusComponent implements OnInit {
     },2000);
   }
 
+  get_now_date(format){
+    let date = new Date();
+    var o = {
+      'M+' : date.getMonth() + 1, //month
+      'd+' : date.getDate(), //day
+      'H+' : date.getHours(), //hour+8小时
+      'm+' : date.getMinutes(), //minute
+      's+' : date.getSeconds(), //second
+      'q+' : Math.floor((date.getMonth() + 3) / 3), //quarter
+      'S' : date.getMilliseconds() //millisecond
+    };
+    if (/(y+)/.test(format))
+      format = format.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+    for (var k in o)
+      if (new RegExp('(' + k + ')').test(format))
+        format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length));
+    return format;
+
+  }
 
   //向串口发送时间
   post_info() {
     //监听meterReading事件 获取数据
     this.send_times++;
-    let times = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+    let times = this.get_now_date('yyyy-MM-dd HH:mm:ss');//new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
     console.log(times);
     let dd = '{"time":"'+times+'"}';
     this.serial_read_write(times);
   }
 
+
   /*********************************串口数据发送和接收***********************************************/
   serial_read_write(write_data)  {  //串口操作
-      //sp是用来记录创建的serialPort的
-      if ((typeof this.sp) != 'undefined') {
-        if (this.sp.path != this.com_num){  //sp有数据，且sp记录打开的串口号和即将创建的串口号不同
-          this.open_serial();  //打开端口
-          this.open_wr(write_data); //新创建的端口必须要先打开端口（sp.on('open',callback)）才能进行数据读写
-        } else {   //这种情况就是打开串口之后一直进行发送操作
-          console.log(this.send_times);
-          if (this.send_times == 1) {//第一次进行发送，此时打开读写同时打开监听
-            this.write_read(write_data); //端口已经创建，直接读写就可以，因为上一次创建端口时已经打开了端口，若此时继续打开端口，sp.on（'open',callback）内部的代码不会执行
-          } else {
-            this.serial_write(write_data);
-          }
+    //sp是用来记录创建的serialPort的
+    if ((typeof this.sp) != 'undefined') {
+      if (this.sp.path != this.com_num){  //sp有数据，且sp记录打开的串口号和即将创建的串口号不同
+        this.open_serial();  //打开端口
+        this.open_wr(write_data); //新创建的端口必须要先打开端口（sp.on('open',callback)）才能进行数据读写
+      } else {   //这种情况就是打开串口之后一直进行发送操作
+        console.log(this.send_times);
+        if (this.send_times == 1) {//第一次进行发送，此时打开读写同时打开监听
+          this.write_read(write_data); //端口已经创建，直接读写就可以，因为上一次创建端口时已经打开了端口，若此时继续打开端口，sp.on（'open',callback）内部的代码不会执行
+        } else {
+          this.serial_write(write_data);
         }
-      } else {  //sp没有数据，则直接打开串口
-        this.open_serial();
-        this.open_wr(write_data);
       }
+    } else {  //sp没有数据，则直接打开串口
+      this.open_serial();
+      this.open_wr(write_data);
+    }
 
   }
   //打开串口
@@ -106,18 +126,35 @@ export class ModbusComponent implements OnInit {
   /****************************读串口************************************************/
   serial_read() {
     let that = this;
+    let count = 0;
+    let ret = '';
     that.sp.on('data', function (info) {
-      // that.message += '\r\n' + info;
-      // that.message += '\r\n接收数据字节长度：' + info.length;
-      // return info;
-      console.log("info:-----");
+      ret += info+'';
       console.log(info+'');
-      // console.log(isNaN(info['type']));
-      // if(isNaN(info['type'])){
-      // }
-      // that.modbusList = JSON.parse(info+'');
-      // that.modbusList = info+'';
-      that.msg = info;
+      count = 0;
+      setTimeout(function(){
+        if(count == 0) {
+          count ++;
+          console.log('3000毫秒了');
+          console.log(ret);
+          let modbusLists = JSON.parse(ret);
+          if(modbusLists['A']){
+            that.modbusList = modbusLists['A'];
+          }else if(modbusLists['B']){
+            that.modbusList = modbusLists['B'];
+          }else if(modbusLists['C']){
+            that.modbusList = modbusLists['C'];
+          }else if(modbusLists['D']){
+            that.modbusList = modbusLists['D'];
+          }else if(modbusLists['E']){
+            that.modbusList = modbusLists['E'];
+          }else if(modbusLists['F']){
+            that.modbusList = modbusLists['F'];
+          }
+          console.log(that.modbusList);
+          ret = '';
+        }
+      },3000);
     });
   }
 

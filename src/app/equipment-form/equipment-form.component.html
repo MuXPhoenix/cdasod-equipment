@@ -40,7 +40,7 @@
                     <label class="label ">按插座选择传感器</label>
                   </section>
                 </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20" *ngIf="sensorList.A">
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section>
                       <div class="sensor text-center">
@@ -61,8 +61,8 @@
                     <section >
                       <label class="select" *ngFor="let c of sensorList.A"><!---;let ind = index;-->
                         <!--<select name="sensor_a" [(ngModel)]="sensor_a">-->
-                          <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_a == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                          <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_a == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
+                        <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_a == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
+                        <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_a == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
                         <!--</select> <i></i>-->
                         <input type="checkbox" checked disabled [(ngModel)]="c.name" value="{{c.name}}">{{c.name}}
                         <input type="text" [(ngModel)]="c.tag" value="{{c.tag}}" >
@@ -104,7 +104,7 @@
                     </section>
                   </div>
                 </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20" *ngIf="sensorList.B">
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section>
                       <div class="sensor text-center">
@@ -125,10 +125,10 @@
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section >
                       <!--<label class="select">-->
-                        <!--<select name="sensor_b" [(ngModel)]="sensor_b">-->
-                          <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_b == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                          <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_b == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
-                        <!--</select> <i></i> </label>-->
+                      <!--<select name="sensor_b" [(ngModel)]="sensor_b">-->
+                      <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_b == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
+                      <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_b == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
+                      <!--</select> <i></i> </label>-->
                       <label class="select" *ngFor="let b of sensorList.B"><!---;let ind = index;-->
                         <input type="checkbox" checked disabled [(ngModel)]="b.name" value="{{b.name}}">{{b.name}}
                         <input type="text" [(ngModel)]="b.tag" value="{{b.tag}}" >
@@ -171,7 +171,7 @@
                     </section>
                   </div>
                 </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20" *ngIf="sensorList.C">
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section>
                       <div class="sensor text-center">
@@ -192,10 +192,10 @@
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section >
                       <!--<label class="select">-->
-                        <!--<select name="sensor_c" [(ngModel)]="sensor_c">-->
-                          <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_c == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                          <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_c == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
-                        <!--</select> <i></i> </label>-->
+                      <!--<select name="sensor_c" [(ngModel)]="sensor_c">-->
+                      <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_c == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
+                      <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_c == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
+                      <!--</select> <i></i> </label>-->
                       <label class="select" *ngFor="let c of sensorList.C"><!---;let ind = index;-->
                         <input type="checkbox" checked disabled [(ngModel)]="c.name" value="{{c.name}}">{{c.name}}
                         <input type="text" [(ngModel)]="c.tag" value="{{c.tag}}" >
@@ -238,7 +238,7 @@
                     </section>
                   </div>
                 </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20" *ngIf="sensorList.D">
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section>
                       <div class="sensor text-center">
@@ -259,10 +259,10 @@
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section >
                       <!--<label class="select">-->
-                        <!--<select name="sensor_d" [(ngModel)]="sensor_d">-->
-                          <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_d == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                          <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_d == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
-                        <!--</select> <i></i> </label>-->
+                      <!--<select name="sensor_d" [(ngModel)]="sensor_d">-->
+                      <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_d == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
+                      <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_d == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
+                      <!--</select> <i></i> </label>-->
                       <label class="select" *ngFor="let d of sensorList.D"><!---;let ind = index;-->
                         <input type="checkbox" checked disabled [(ngModel)]="d.name" value="{{d.name}}">{{d.name}}
                         <input type="text" [(ngModel)]="d.tag" value="{{d.tag}}" >
@@ -305,7 +305,7 @@
                     </section>
                   </div>
                 </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20" *ngIf="sensorList.E">
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section>
                       <div class="sensor text-center">
@@ -326,10 +326,10 @@
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section >
                       <!--<label class="select">-->
-                        <!--<select name="sensor_e" [(ngModel)]="sensor_e">-->
-                          <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_e == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                          <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_e == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
-                        <!--</select> <i></i> </label>-->
+                      <!--<select name="sensor_e" [(ngModel)]="sensor_e">-->
+                      <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_e == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
+                      <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_e == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
+                      <!--</select> <i></i> </label>-->
                       <label class="select" *ngFor="let e of sensorList.E"><!---;let ind = index;-->
                         <input type="checkbox" checked disabled [(ngModel)]="e.name" value="{{e.name}}">{{e.name}}
                         <input type="text" [(ngModel)]="e.tag" value="{{e.tag}}" >
@@ -372,7 +372,7 @@
                     </section>
                   </div>
                 </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20" *ngIf="sensorList.F">
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section>
                       <div class="sensor text-center">
@@ -393,10 +393,10 @@
                   <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <section >
                       <!--<label class="select">-->
-                        <!--<select name="sensor_f" [(ngModel)]="sensor_f">-->
-                          <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_f == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                          <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_f == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
-                        <!--</select> <i></i> </label>-->
+                      <!--<select name="sensor_f" [(ngModel)]="sensor_f">-->
+                      <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_f == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
+                      <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_f == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
+                      <!--</select> <i></i> </label>-->
                       <label class="select" *ngFor="let f of sensorList.F"><!---;let ind = index;-->
                         <input type="checkbox" checked disabled [(ngModel)]="f.name" value="{{f.name}}">{{f.name}}
                         <input type="text" [(ngModel)]="f.tag" value="{{f.tag}}" >
@@ -466,26 +466,25 @@
               </tr>
               <tr>
                 <td><strong>IP：</strong></td>
-                <td><span>132.22.2.13</span></td>
+                <td><span>{{equipment_IP_address}}</span></td>
               </tr>
               <!--<tr>-->
-                <!--<td><strong>子网掩码：</strong></td>-->
-                <!--<td><span>132.22.2.13</span></td>-->
+              <!--<td><strong>子网掩码：</strong></td>-->
+              <!--<td><span>132.22.2.13</span></td>-->
               <!--</tr>-->
               <!--<tr>-->
-                <!--<td><strong>网管：</strong></td>-->
-                <!--<td><span>132.22.2.13</span></td>-->
+              <!--<td><strong>网管：</strong></td>-->
+              <!--<td><span>132.22.2.13</span></td>-->
               <!--</tr>-->
-
               </tbody>
             </table>
           </div>
         </div>
         <div class="panel">
           <div class="panel-center">
-          <header class="pd10">
-            <h2>本地IP设置</h2>
-          </header>
+            <header class="pd10">
+              <h2>本地IP设置</h2>
+            </header>
             <div>{{msg}}</div>
             <form   class="smart-form pab40 ">
               <fieldset>
@@ -553,11 +552,11 @@
                 </div>
               </fieldset>
             </form>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
+    </div>
   </div>
 </div>
 
