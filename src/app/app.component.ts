@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
     ){
     }
     ngOnInit() {
+            console.log('app==============');
         // this.getI3otpList('1');
     }
     // /**

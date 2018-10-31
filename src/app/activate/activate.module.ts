@@ -5,18 +5,20 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {ActivateComponent} from "./activate.component";
 import {RouterModule} from "@angular/router";
-// import {MenuModule} from "../menu/menu.module";
+// import {MenuComponent} from "../menu/menu.component";
+import {MenuModule} from "../menu/menu.module";
 
 @NgModule({
     declarations: [
-        ActivateComponent
+        ActivateComponent,
+        // MenuComponent
     ],
     imports: [
       CommonModule,
       FormsModule,
       ReactiveFormsModule,
       HttpModule,
-        // MenuModule,
+        MenuModule,
       RouterModule.forChild([
         { path: '', component: ActivateComponent }
       ])

@@ -26,7 +26,7 @@
 		"postinstall:nfc": "electron-builder install-app-deps && electron-rebuild -f -w nfc-pcsc",
 		"postinstall": "electron-builder install-app-deps && electron-rebuild -f -w serialport",
 		"packager:win": "cross-env NODE_OS=win node builder/packager.js",
-		"packager:win_1": "electron-packager . app --win --out presenterTool --arch=x64 --app-version 1.0.0 --overwrite --ignore=node_modules",
+		"packager:win_1": "electron-packager . app --win --out presenterTool --arch=x64 --app-version 1.0.0 --overwrite --ignore=node_modules --ignore=src --ignore=builder --ignore=presenterTool",
 		"packager:mac": "cross-env NODE_OS=mac node builder/packager.js",
 		"packager:linux": "cross-env NODE_OS=linux node builder/packager.js",
 		"installer:win": "npm run packager:win && cross-env NODE_OS=win node builder/installer.js",

@@ -13,7 +13,7 @@ import url = require('url');
 
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
-const Menu = electron.Menu;
+// const Menu = electron.Menu;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow: electron.BrowserWindow;
@@ -26,66 +26,66 @@ let dev = args.some(arg => arg === '--dev');
 function createWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({ width: 1024, height: 720 });
-	// mainWindow.setMenu(null);
+	mainWindow.setMenu(null);
 
 	let url_path = '';
-	const mainMenuTemplate = [{
-		label: '设备列表',
-		click(){
-			url_path = '/activate';
-			mainWindow.loadURL(url.format({
-				pathname: path.join(__dirname, 'dist/index.html'),
-				protocol: 'file:',
-				slashes: true,
-				hash: url_path
-			}));
-		}
-	},{
-		label: 'MQTT',
-		click(){
-			url_path = '/mqtt';
-			mainWindow.loadURL(url.format({
-				pathname: path.join(__dirname, 'dist/index.html'),
-				protocol: 'file:',
-				slashes: true,
-				hash: url_path
-			}));
-		}
-	},{
-		label: 'MODBUS',
-		click(){
-			url_path = '/modbus';
-			mainWindow.loadURL(url.format({
-				pathname: path.join(__dirname, 'dist/index.html'),
-				protocol: 'file:',
-				slashes: true,
-				hash: url_path
-			}));
-		}
-	},{
-		label: '登录',
-		click(){
-			url_path = '/login';
-			mainWindow.loadURL(url.format({
-				pathname: path.join(__dirname, 'dist/index.html'),
-				protocol: 'file:',
-				slashes: true,
-				hash: url_path
-			}));
-		}
-	},{
-		label: '系统',
-		submenu:[
-			{
-				label:'退出',
-				click(){
-					app.quit();
-				}
-			}
-		]
-	}];
-	const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
-	Menu.setApplicationMenu(mainMenu);
+	// const mainMenuTemplate = [{
+	// 	label: '设备列表',
+	// 	click(){
+	// 		url_path = '/activate';
+	// 		mainWindow.loadURL(url.format({
+	// 			pathname: path.join(__dirname, 'dist/index.html'),
+	// 			protocol: 'file:',
+	// 			slashes: true,
+	// 			hash: url_path
+	// 		}));
+	// 	}
+	// },{
+	// 	label: 'MQTT',
+	// 	click(){
+	// 		url_path = '/mqtt';
+	// 		mainWindow.loadURL(url.format({
+	// 			pathname: path.join(__dirname, 'dist/index.html'),
+	// 			protocol: 'file:',
+	// 			slashes: true,
+	// 			hash: url_path
+	// 		}));
+	// 	}
+	// },{
+	// 	label: 'MODBUS',
+	// 	click(){
+	// 		url_path = '/modbus';
+	// 		mainWindow.loadURL(url.format({
+	// 			pathname: path.join(__dirname, 'dist/index.html'),
+	// 			protocol: 'file:',
+	// 			slashes: true,
+	// 			hash: url_path
+	// 		}));
+	// 	}
+	// },{
+	// 	label: '登录',
+	// 	click(){
+	// 		url_path = '/login';
+	// 		mainWindow.loadURL(url.format({
+	// 			pathname: path.join(__dirname, 'dist/index.html'),
+	// 			protocol: 'file:',
+	// 			slashes: true,
+	// 			hash: url_path
+	// 		}));
+	// 	}
+	// },{
+	// 	label: '系统',
+	// 	submenu:[
+	// 		{
+	// 			label:'退出',
+	// 			click(){
+	// 				app.quit();
+	// 			}
+	// 		}
+	// 	]
+	// }];
+	// const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+	// Menu.setApplicationMenu(mainMenu);
 
 	if(url_path == '' || url_path == '/') {
 

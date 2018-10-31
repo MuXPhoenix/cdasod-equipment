@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import { routing } from './app.routing'
 import {GlobalService} from "./shared/global.service";
 import {LocalStorage} from "./shared/localStorage.service";
+import {SerialportService} from "./shared/serialport.service";
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import {LocalStorage} from "./shared/localStorage.service";
     ],
     bootstrap: [AppComponent],
     providers: [
+        SerialportService,
         GlobalService,
         LocalStorage
     ]

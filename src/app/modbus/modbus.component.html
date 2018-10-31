@@ -1,3 +1,5 @@
+
+<app-menu></app-menu>
 <div id="main">
   <div id="content">
     <div class="panel">
@@ -28,7 +30,8 @@
           <tr *ngFor="let ml of modbusList" >
             <td>{{ml.number}}</td>
             <td>{{ml.name}}</td>
-            <td>{{ml.value}}</td>
+            <td *ngIf="ml.formula > 0">{{ml.value * ml.formula}}</td>
+            <td *ngIf="ml.formula ==0 || ml.formula == ''">{{ml.value}}</td>
             <td>{{ml.unit}}</td>
           </tr>
           </tbody>
