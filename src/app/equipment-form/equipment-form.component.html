@@ -1,585 +1,512 @@
-<div><a [routerLink]="['/activate']"><<返回</a></div>
+<div class="tool-menu"><a [routerLink]="['/activate']">返回</a></div>
 <div id="main">
   <div id="content">
-    <div class="row">
-      <div class="col-xs-12 col-sm-8 col-md-9">
-        <div class="panel">
-          <div class="panel-center">
-            <header >
-              <h2>设备基本设置</h2>
-            </header>
-            <form   class="smart-form pab40">
-              <fieldset>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <section>
-                    <label class="label txt-color-blue">设备名称<span class="asterisk-color">*</span></label>
-                    <label class="input">
-                      <input type="text" [(ngModel)]="equipment_name" name="equipment_name">
-                    </label>
-                  </section>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <section >
-                    <label class="label">所属用户</label>
-                    <label class="select">
-                      <select name="buy_u_id" [(ngModel)]="buy_u_id">
-                        <option *ngFor="let u of i3otpInfo.result?.userList" [selected]="i3otpInfo.result?.buy_u_id == u.id" value="{{u.id}}">{{u.u_username}}</option>
-                      </select> <i></i> </label>
-                  </section>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <section>
-                    <label class="label txt-color-blue">设备位置<span class="asterisk-color">*</span></label>
-                    <label class="input">
-                      <input type="text" [(ngModel)]="equipment_address" name="equipment_address">
-                    </label>
-                  </section>
-                </div>
+    <div class="panel">
+      <div class="panel-center">
+        <header >
+          <h2>设备基本设置</h2>
+        </header>
+        <form   class="smart-form ">
+          <fieldset>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <section>
+                <label class="label txt-color-blue">设备名称<span class="asterisk-color">*</span></label>
+                <label class="input">
+                  <input type="text" [(ngModel)]="equipment_name" name="equipment_name">
+                </label>
+              </section>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <section >
+                <label class="label">所属用户</label>
+                <label class="select">
+                  <select name="buy_u_id" [(ngModel)]="buy_u_id">
+                    <option *ngFor="let u of i3otpInfo.result?.userList" [selected]="i3otpInfo.result?.buy_u_id == u.id" value="{{u.id}}">{{u.u_username}}</option>
+                  </select> <i></i> </label>
+              </section>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <section>
+                <label class="label txt-color-blue">设备位置<span class="asterisk-color">*</span></label>
+                <label class="input">
+                  <input type="text" [(ngModel)]="equipment_address" name="equipment_address">
+                </label>
+              </section>
+            </div>
 
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <section>
-                    <label class="label ">按插座选择传感器</label>
-                  </section>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <div class="sensor text-center">
-                        <p>
-                          <span class="sensor-span">A</span>
-                          <span>B</span>
-                          <span>C</span>
-                        </p>
-                        <p>
-                          <span >D</span>
-                          <span >E</span>
-                          <span >F</span>
-                        </p>
-                      </div>
-                    </section>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <section>
+                <label class="label ">按插座选择传感器</label>
+              </section>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <div class="sensor text-center">
+                    <p>
+                      <span class="sensor-span">A</span>
+                      <span>B</span>
+                      <span>C</span>
+                    </p>
+                    <p>
+                      <span >D</span>
+                      <span >E</span>
+                      <span >F</span>
+                    </p>
                   </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <!--<label class="select" *ngFor="let c of sensorListA">&lt;!&ndash;-;let ind = index;&ndash;&gt;-->
-                        <!--&lt;!&ndash;<select name="sensor_a" [(ngModel)]="sensor_a">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_a == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_a == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</select> <i></i>&ndash;&gt;-->
-                        <!--<input type="checkbox" checked disabled [(ngModel)]="c.name" value="{{c.name}}" [ngModelOptions]="{standalone: true}">{{c.name}}-->
-                        <!--&lt;!&ndash;<input type="text" [(ngModel)]="c.tag" value="{{c.tag}}" >&ndash;&gt;-->
-                      <!--</label>-->
-                      <label class="input">
-                        {{sensor_a}}
-                      </label>
-                    </section>
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <label class="select">
-                        <select name="sensor_time_a" [(ngModel)]="sensor_time_a">
-                          <option value="0">--选择时间--</option>
-                          <option value="1m">1分钟</option>
-                          <option value="3m">3分钟</option>
-                          <option value="5m">5分钟</option>
-                          <option value="10m">10分钟</option>
-                          <option value="30m">30分钟</option>
-                          <option value="1h">1小时</option>
-                          <option value="5h">5小时</option>
-                          <option value="1d">1天</option>
-                          <option value="15d">5天</option>
-                          <option value="35d">15天</option>
-                          <option value="no">不采集（设备主动上传）</option>
-                        </select> <i></i> </label>
-                    </section>
+                </section>
+              </div>
 
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_unit_a" [(ngModel)]="sensor_unit_a" placeholder="输入单位"  >
-                      </label>
-                    </section>
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_formula_a" [(ngModel)]="sensor_formula_a" placeholder="输入公式"  >
-                      </label>
-                    </section>
-                  </div>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <div class="sensor text-center">
-                        <p>
-                          <span >A</span>
-                          <span class="sensor-span">B</span>
-                          <span>C</span>
-                        </p>
-                        <p>
-                          <span >D</span>
-                          <span >E</span>
-                          <span >F</span>
-                        </p>
-                      </div>
-                    </section>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name=""  placeholder="" value="{{sensor_a}}" disabled="disabled" >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section >
+                  <label class="select">
+                    <select name="sensor_time_a" [(ngModel)]="sensor_time_a">
+                      <option value="0">--选择时间--</option>
+                      <option value="1m">1分钟</option>
+                      <option value="3m">3分钟</option>
+                      <option value="5m">5分钟</option>
+                      <option value="10m">10分钟</option>
+                      <option value="30m">30分钟</option>
+                      <option value="1h">1小时</option>
+                      <option value="5h">5小时</option>
+                      <option value="1d">1天</option>
+                      <option value="15d">5天</option>
+                      <option value="35d">15天</option>
+                      <option value="no">不采集（设备主动上传）</option>
+                    </select> <i></i> </label>
+                </section>
 
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_unit_a" [(ngModel)]="sensor_unit_a" placeholder="输入单位"  >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_formula_a" [(ngModel)]="sensor_formula_a" placeholder="输入公式"  >
+                  </label>
+                </section>
+              </div>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <div class="sensor text-center">
+                    <p>
+                      <span >A</span>
+                      <span class="sensor-span">B</span>
+                      <span>C</span>
+                    </p>
+                    <p>
+                      <span >D</span>
+                      <span >E</span>
+                      <span >F</span>
+                    </p>
                   </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <!--<label class="select">-->
-                      <!--<select name="sensor_b" [(ngModel)]="sensor_b">-->
-                      <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_b == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                      <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_b == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
-                      <!--</select> <i></i> </label>-->
-                      <!--<label class="select" *ngFor="let b of sensorListB">&lt;!&ndash;-;let ind = index;&ndash;&gt;-->
-                        <!--<input type="checkbox" checked disabled [(ngModel)]="b.name" value="{{b.name}}" [ngModelOptions]="{standalone: true}">{{b.name}}-->
-                        <!--&lt;!&ndash;<input type="text" [(ngModel)]="b.tag" value="{{b.tag}}" >&ndash;&gt;-->
-                      <!--</label>-->
+                </section>
 
-                      <label class="input">
-                        {{sensor_b}}
-                      </label>
-                    </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name=""  placeholder="" value="{{sensor_b}}" disabled="disabled" >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section >
+                  <label class="select">
+                    <select name="sensor_time_b" [(ngModel)]="sensor_time_b">
+                      <option value="0">--选择时间--</option>
+                      <option value="1m">1分钟</option>
+                      <option value="3m">3分钟</option>
+                      <option value="5m">5分钟</option>
+                      <option value="10m">10分钟</option>
+                      <option value="30m">30分钟</option>
+                      <option value="1h">1小时</option>
+                      <option value="5h">5小时</option>
+                      <option value="1d">1天</option>
+                      <option value="15d">5天</option>
+                      <option value="35d">15天</option>
+                      <option value="no">不采集（设备主动上传）</option>
+                    </select> <i></i> </label>
+                </section>
 
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <label class="select">
-                        <select name="sensor_time_b" [(ngModel)]="sensor_time_b">
-                          <option value="0">--选择时间--</option>
-                          <option value="1m">1分钟</option>
-                          <option value="3m">3分钟</option>
-                          <option value="5m">5分钟</option>
-                          <option value="10m">10分钟</option>
-                          <option value="30m">30分钟</option>
-                          <option value="1h">1小时</option>
-                          <option value="5h">5小时</option>
-                          <option value="1d">1天</option>
-                          <option value="15d">5天</option>
-                          <option value="35d">15天</option>
-                          <option value="no">不采集（设备主动上传）</option>
-                        </select> <i></i> </label>
-                    </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_unit_b" [(ngModel)]="sensor_unit_b" placeholder="输入单位"  >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text"  name="sensor_formula_b" [(ngModel)]="sensor_formula_b"  placeholder="输入公式"  >
+                  </label>
+                </section>
+              </div>
+            </div>
 
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <div class="sensor text-center">
+                    <p>
+                      <span >A</span>
+                      <span>B</span>
+                      <span class="sensor-span">C</span>
+                    </p>
+                    <p>
+                      <span >D</span>
+                      <span >E</span>
+                      <span >F</span>
+                    </p>
                   </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_unit_b" [(ngModel)]="sensor_unit_b" placeholder="输入单位"  >
-                      </label>
-                    </section>
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text"  name="sensor_formula_b" [(ngModel)]="sensor_formula_b"  placeholder="输入公式"  >
-                      </label>
-                    </section>
-                  </div>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <div class="sensor text-center">
-                        <p>
-                          <span >A</span>
-                          <span>B</span>
-                          <span class="sensor-span">C</span>
-                        </p>
-                        <p>
-                          <span >D</span>
-                          <span >E</span>
-                          <span >F</span>
-                        </p>
-                      </div>
-                    </section>
+                </section>
 
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <!--<label class="select">-->
-                      <!--<select name="sensor_c" [(ngModel)]="sensor_c">-->
-                      <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_c == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                      <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_c == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
-                      <!--</select> <i></i> </label>-->
-                      <!--<label class="select" *ngFor="let c of sensorListC">&lt;!&ndash;-;let ind = index;&ndash;&gt;-->
-                        <!--<input type="checkbox" checked disabled [(ngModel)]="c.name" value="{{c.name}}" [ngModelOptions]="{standalone: true}">{{c.name}}-->
-                        <!--&lt;!&ndash;<input type="text" [(ngModel)]="c.tag" value="{{c.tag}}" >&ndash;&gt;-->
-                      <!--</label>-->
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name=""  placeholder="" value="{{sensor_c}}" disabled="disabled" >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section >
+                  <label class="select">
+                    <select name="sensor_time_c" [(ngModel)]="sensor_time_c">
+                      <option value="0">--选择时间--</option>
+                      <option value="1m">1分钟</option>
+                      <option value="3m">3分钟</option>
+                      <option value="5m">5分钟</option>
+                      <option value="10m">10分钟</option>
+                      <option value="30m">30分钟</option>
+                      <option value="1h">1小时</option>
+                      <option value="5h">5小时</option>
+                      <option value="1d">1天</option>
+                      <option value="15d">5天</option>
+                      <option value="35d">15天</option>
+                      <option value="no">不采集（设备主动上传）</option>
+                    </select> <i></i> </label>
+                </section>
 
-                      <label class="input">
-                        {{sensor_c}}
-                      </label>
-                    </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_unit_c" [(ngModel)]="sensor_unit_c" placeholder="输入单位"  >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_formula_c" [(ngModel)]="sensor_formula_c"  placeholder="输入公式"  >
+                  </label>
+                </section>
+              </div>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <div class="sensor text-center">
+                    <p>
+                      <span >A</span>
+                      <span>B</span>
+                      <span>C</span>
+                    </p>
+                    <p>
+                      <span class="sensor-span" >D</span>
+                      <span >E</span>
+                      <span >F</span>
+                    </p>
+                  </div>
+                </section>
 
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <label class="select">
-                        <select name="sensor_time_c" [(ngModel)]="sensor_time_c">
-                          <option value="0">--选择时间--</option>
-                          <option value="1m">1分钟</option>
-                          <option value="3m">3分钟</option>
-                          <option value="5m">5分钟</option>
-                          <option value="10m">10分钟</option>
-                          <option value="30m">30分钟</option>
-                          <option value="1h">1小时</option>
-                          <option value="5h">5小时</option>
-                          <option value="1d">1天</option>
-                          <option value="15d">5天</option>
-                          <option value="35d">15天</option>
-                          <option value="no">不采集（设备主动上传）</option>
-                        </select> <i></i> </label>
-                    </section>
+              </div>
 
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_unit_c" [(ngModel)]="sensor_unit_c" placeholder="输入单位"  >
-                      </label>
-                    </section>
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_formula_c" [(ngModel)]="sensor_formula_c"  placeholder="输入公式"  >
-                      </label>
-                    </section>
-                  </div>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <div class="sensor text-center">
-                        <p>
-                          <span >A</span>
-                          <span>B</span>
-                          <span>C</span>
-                        </p>
-                        <p>
-                          <span class="sensor-span" >D</span>
-                          <span >E</span>
-                          <span >F</span>
-                        </p>
-                      </div>
-                    </section>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name=""  placeholder="" value="{{sensor_d}}" disabled="disabled" >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section >
+                  <label class="select">
+                    <select name="sensor_time_d" [(ngModel)]="sensor_time_d">
+                      <option value="0">--选择时间--</option>
+                      <option value="1m">1分钟</option>
+                      <option value="3m">3分钟</option>
+                      <option value="5m">5分钟</option>
+                      <option value="10m">10分钟</option>
+                      <option value="30m">30分钟</option>
+                      <option value="1h">1小时</option>
+                      <option value="5h">5小时</option>
+                      <option value="1d">1天</option>
+                      <option value="15d">5天</option>
+                      <option value="35d">15天</option>
+                      <option value="no">不采集（设备主动上传）</option>
+                    </select> <i></i> </label>
+                </section>
 
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_unit_d" [(ngModel)]="sensor_unit_d" placeholder="输入单位"  >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_formula_d" [(ngModel)]="sensor_formula_d" placeholder="输入公式"  >
+                  </label>
+                </section>
+              </div>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <div class="sensor text-center">
+                    <p>
+                      <span>A</span>
+                      <span>B</span>
+                      <span>C</span>
+                    </p>
+                    <p>
+                      <span >D</span>
+                      <span  class="sensor-span">E</span>
+                      <span >F</span>
+                    </p>
                   </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <!--<label class="select">-->
-                      <!--<select name="sensor_d" [(ngModel)]="sensor_d">-->
-                      <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_d == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                      <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_d == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
-                      <!--</select> <i></i> </label>-->
-                      <!--<label class="select" *ngFor="let d of sensorListD">&lt;!&ndash;-;let ind = index;&ndash;&gt;-->
-                        <!--<input type="checkbox" checked disabled [(ngModel)]="d.name" value="{{d.name}}" [ngModelOptions]="{standalone: true}">{{d.name}}-->
-                        <!--&lt;!&ndash;<input type="text" [(ngModel)]="d.tag" value="{{d.tag}}" >&ndash;&gt;-->
-                      <!--</label>-->
+                </section>
 
-                      <label class="input">
-                        {{sensor_d}}
-                      </label>
-                    </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name=""  placeholder="" value="{{sensor_e}}" disabled="disabled" >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section >
+                  <label class="select">
+                    <select name="sensor_time_e" [(ngModel)]="sensor_time_e">
+                      <option value="0">--选择时间--</option>
+                      <option value="1m">1分钟</option>
+                      <option value="3m">3分钟</option>
+                      <option value="5m">5分钟</option>
+                      <option value="10m">10分钟</option>
+                      <option value="30m">30分钟</option>
+                      <option value="1h">1小时</option>
+                      <option value="5h">5小时</option>
+                      <option value="1d">1天</option>
+                      <option value="15d">5天</option>
+                      <option value="35d">15天</option>
+                      <option value="no">不采集（设备主动上传）</option>
+                    </select> <i></i> </label>
+                </section>
 
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_unit_e" [(ngModel)]="sensor_unit_e" placeholder="输入单位"  >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_formula_e" [(ngModel)]="sensor_formula_e" placeholder="输入公式"  >
+                  </label>
+                </section>
+              </div>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <div class="sensor text-center">
+                    <p>
+                      <span>A</span>
+                      <span>B</span>
+                      <span>C</span>
+                    </p>
+                    <p>
+                      <span >D</span>
+                      <span >E</span>
+                      <span class="sensor-span">F</span>
+                    </p>
                   </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <label class="select">
-                        <select name="sensor_time_d" [(ngModel)]="sensor_time_d">
-                          <option value="0">--选择时间--</option>
-                          <option value="1m">1分钟</option>
-                          <option value="3m">3分钟</option>
-                          <option value="5m">5分钟</option>
-                          <option value="10m">10分钟</option>
-                          <option value="30m">30分钟</option>
-                          <option value="1h">1小时</option>
-                          <option value="5h">5小时</option>
-                          <option value="1d">1天</option>
-                          <option value="15d">5天</option>
-                          <option value="35d">15天</option>
-                          <option value="no">不采集（设备主动上传）</option>
-                        </select> <i></i> </label>
-                    </section>
+                </section>
 
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_unit_d" [(ngModel)]="sensor_unit_d" placeholder="输入单位"  >
-                      </label>
-                    </section>
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_formula_d" [(ngModel)]="sensor_formula_d" placeholder="输入公式"  >
-                      </label>
-                    </section>
-                  </div>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <div class="sensor text-center">
-                        <p>
-                          <span>A</span>
-                          <span>B</span>
-                          <span>C</span>
-                        </p>
-                        <p>
-                          <span >D</span>
-                          <span  class="sensor-span">E</span>
-                          <span >F</span>
-                        </p>
-                      </div>
-                    </section>
+              </div>
 
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <!--<label class="select">-->
-                      <!--<select name="sensor_e" [(ngModel)]="sensor_e">-->
-                      <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_e == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                      <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_e == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
-                      <!--</select> <i></i> </label>-->
-                      <!--<label class="select" *ngFor="let e of sensorListE">&lt;!&ndash;-;let ind = index;&ndash;&gt;-->
-                        <!--<input type="checkbox" checked disabled [(ngModel)]="e.name" value="{{e.name}}" [ngModelOptions]="{standalone: true}">{{e.name}}-->
-                        <!--&lt;!&ndash;<input type="text" [(ngModel)]="e.tag" value="{{e.tag}}" >&ndash;&gt;-->
-                      <!--</label>-->
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name=""  placeholder="" value="{{sensor_f}}" disabled="disabled" >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section >
+                  <label class="select">
+                    <select name="sensor_time_f" [(ngModel)]="sensor_time_f">
+                      <option value="0">--选择时间--</option>
+                      <option value="1m">1分钟</option>
+                      <option value="3m">3分钟</option>
+                      <option value="5m">5分钟</option>
+                      <option value="10m">10分钟</option>
+                      <option value="30m">30分钟</option>
+                      <option value="1h">1小时</option>
+                      <option value="5h">5小时</option>
+                      <option value="1d">1天</option>
+                      <option value="15d">5天</option>
+                      <option value="35d">15天</option>
+                      <option value="no">不采集（设备主动上传）</option>
+                    </select> <i></i> </label>
+                </section>
 
-                      <label class="input">
-                        {{sensor_e}}
-                      </label>
-                    </section>
-
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <label class="select">
-                        <select name="sensor_time_e" [(ngModel)]="sensor_time_e">
-                          <option value="0">--选择时间--</option>
-                          <option value="1m">1分钟</option>
-                          <option value="3m">3分钟</option>
-                          <option value="5m">5分钟</option>
-                          <option value="10m">10分钟</option>
-                          <option value="30m">30分钟</option>
-                          <option value="1h">1小时</option>
-                          <option value="5h">5小时</option>
-                          <option value="1d">1天</option>
-                          <option value="15d">5天</option>
-                          <option value="35d">15天</option>
-                          <option value="no">不采集（设备主动上传）</option>
-                        </select> <i></i> </label>
-                    </section>
-
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_unit_e" [(ngModel)]="sensor_unit_e" placeholder="输入单位"  >
-                      </label>
-                    </section>
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_formula_e" [(ngModel)]="sensor_formula_e" placeholder="输入公式"  >
-                      </label>
-                    </section>
-                  </div>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20">
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <div class="sensor text-center">
-                        <p>
-                          <span>A</span>
-                          <span>B</span>
-                          <span>C</span>
-                        </p>
-                        <p>
-                          <span >D</span>
-                          <span >E</span>
-                          <span class="sensor-span">F</span>
-                        </p>
-                      </div>
-                    </section>
-
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <!--<label class="select">-->
-                      <!--<select name="sensor_f" [(ngModel)]="sensor_f">-->
-                      <!--<option value="0" [selected]="i3otpInfo.result?.sensor_infos?.sensor_f == 0">&#45;&#45;选择传感器类型&#45;&#45;</option>-->
-                      <!--<option *ngFor="let c of i3otpInfo.result?.categoryList" [selected]="i3otpInfo.result?.sensor_infos?.sensor_f == c.category_id" value="{{c.category_id}}">{{c.category_desc}}</option>-->
-                      <!--</select> <i></i> </label>-->
-                      <!--<label class="select" *ngFor="let f of sensorListF">&lt;!&ndash;-;let ind = index;&ndash;&gt;-->
-                        <!--<input type="checkbox" checked disabled [(ngModel)]="f.name" value="{{f.name}}" [ngModelOptions]="{standalone: true}">{{f.name}}-->
-                        <!--&lt;!&ndash;<input type="text" [(ngModel)]="f.tag" value="{{f.tag}}" >&ndash;&gt;-->
-                      <!--</label>-->
-
-                      <label class="input">
-                        {{sensor_f}}
-                      </label>
-                    </section>
-
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section >
-                      <label class="select">
-                        <select name="sensor_time_f" [(ngModel)]="sensor_time_f">
-                          <option value="0">--选择时间--</option>
-                          <option value="1m">1分钟</option>
-                          <option value="3m">3分钟</option>
-                          <option value="5m">5分钟</option>
-                          <option value="10m">10分钟</option>
-                          <option value="30m">30分钟</option>
-                          <option value="1h">1小时</option>
-                          <option value="5h">5小时</option>
-                          <option value="1d">1天</option>
-                          <option value="15d">5天</option>
-                          <option value="35d">15天</option>
-                          <option value="no">不采集（设备主动上传）</option>
-                        </select> <i></i> </label>
-                    </section>
-
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_unit_f" [(ngModel)]="sensor_unit_f" placeholder="输入单位"  >
-                      </label>
-                    </section>
-                  </div>
-                  <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <section>
-                      <label class="input">
-                        <input type="text" name="sensor_formula_f" [(ngModel)]="sensor_formula_f" placeholder="输入公式"  >
-                      </label>
-                    </section>
-                  </div>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-20 text-center">
-                  <button (click)="submit_setting()" type="submit" class="btn btn-primary pd10" style="padding: 4px 6px;">
-                    <i class="glyphicon glyphicon-ok"></i>
-                    保存
-                  </button>
-                </div>
-              </fieldset>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4 col-md-3">
-        <div class="panel">
-          <div class="panel-center">
-            <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20 text-center">
-              <button class="btn btn-save btn-xs" (click)="select_IP()">
-                <span class="hidden-mobile" >查询IP地址</span>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_unit_f" [(ngModel)]="sensor_unit_f" placeholder="输入单位"  >
+                  </label>
+                </section>
+              </div>
+              <div class="form-group col col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <section>
+                  <label class="input">
+                    <input type="text" name="sensor_formula_f" [(ngModel)]="sensor_formula_f" placeholder="输入公式"  >
+                  </label>
+                </section>
+              </div>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-20 text-center">
+              <button (click)="submit_setting()" type="submit" class="btn btn-primary pd10" style="padding: 4px 6px;">
+                <i class="glyphicon glyphicon-ok"></i>
+                保存
               </button>
             </div>
-            <table class="table table-striped smart-form table-height-20 table-bordered">
-              <tbody>
-              <tr >
-                <td><strong>设备名：</strong></td>
-                <td><span>{{equipment_name}}</span></td>
-              </tr>
-              <tr>
-                <td><strong>IP：</strong></td>
-                <td><span>{{equipment_IP_address}}</span></td>
-              </tr>
-              <!--<tr>-->
-              <!--<td><strong>子网掩码：</strong></td>-->
-              <!--<td><span>132.22.2.13</span></td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-              <!--<td><strong>网管：</strong></td>-->
-              <!--<td><span>132.22.2.13</span></td>-->
-              <!--</tr>-->
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="panel">
-          <div class="panel-center">
-            <header class="pd10">
-              <h2>本地IP设置</h2>
-            </header>
-            <div>{{msg}}</div>
-            <form   class="smart-form pab40 ">
-              <fieldset>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <section>
-                    <div class="inline-group">
-                      <label class="radio">
-                        <input type="radio" name="IP" checked="">
-                        <i></i>自动获得IP地址</label>
-                      <label class="radio" >
-                        <input type="radio" name="IP">
-                        <i></i>使用下面的IP地址</label>
-                    </div>
-                  </section>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-gray" >
-                  <section>
-                    <label class="label">IP：</label>
-                    <label class="input">
-                      <input type="text" [(ngModel)]="IP" name="IP">
-                    </label>
-                  </section>
-                  <section>
-                    <label class="label">子网掩码：</label>
-                    <label class="input">
-                      <input type="text" [(ngModel)]="child_code" name="child_code">
-                    </label>
-                  </section>
-                  <section>
-                    <label class="label">默认网关：</label>
-                    <label class="input">
-                      <input type="text" [(ngModel)]="default_IP" name="default_IP">
-                    </label>
-                  </section>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <section>
-                    <div class="inline-group">
-                      <label class="radio">
-                        <input type="radio" name="DNS" checked="">
-                        <i></i>自动获得DNS服务器</label>
-                      <label class="radio">
-                        <input type="radio" name="DNS">
-                        <i></i>使用下面的DNS服务器</label>
-                    </div>
-                  </section>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-gray" >
-                  <section>
-                    <label class="label">首选DNS服务器：</label>
-                    <label class="input">
-                      <input type="text" [(ngModel)]="dns" name="dns">
-                    </label>
-                  </section>
-                </div>
-                <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-20 text-center">
-                  <!--<button  type="button" class="btn btn-primary pd10" (click)="bnt_change()" style="padding: 4px 6px;">-->
-                    <!--<i class="glyphicon glyphicon-ok"></i>-->
-                    <!--{{serial_title}}-->
-                  <!--</button>-->
-                  <button  type="button" class="btn btn-primary pd10" (click)="submit_IP_setting()" style="padding: 4px 6px;">
-                    <i class="glyphicon glyphicon-ok"></i>
-                    保存
-                  </button>
-                </div>
-              </fieldset>
-            </form>
-          </div>
-        </div>
+          </fieldset>
+        </form>
       </div>
+    </div>
+    <div class="panel">
+      <div class="panel-center">
+        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 mgb20 text-center">
+          <button class="btn btn-save btn-xs" (click)="select_IP()">
+            <span class="hidden-mobile" >查询IP地址</span>
+          </button>
+        </div>
+        <table class="table table-striped smart-form table-height-20 table-bordered">
+          <tbody>
+          <tr >
+            <td><strong>设备名：</strong></td>
+            <td><span>{{equipment_name}}</span></td>
+          </tr>
+          <tr>
+            <td><strong>IP：</strong></td>
+            <td><span>{{equipment_IP_address}}</span></td>
+          </tr>
 
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-center">
+        <header class="pd10">
+          <h2>本地IP设置</h2>
+        </header>
+        <div>{{msg}}</div>
+        <form   class="smart-form pab40 ">
+          <fieldset>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <section>
+                <div class="inline-group">
+                  <label class="radio">
+                    <input type="radio" name="IP" checked="">
+                    <i></i>自动获得IP地址</label>
+                  <label class="radio" >
+                    <input type="radio" name="IP">
+                    <i></i>使用下面的IP地址</label>
+                </div>
+              </section>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-gray" >
+              <section>
+                <label class="label">IP：</label>
+                <label class="input">
+                  <input type="text" [(ngModel)]="IP" name="IP">
+                </label>
+              </section>
+              <section>
+                <label class="label">子网掩码：</label>
+                <label class="input">
+                  <input type="text" [(ngModel)]="child_code" name="child_code">
+                </label>
+              </section>
+              <section>
+                <label class="label">默认网关：</label>
+                <label class="input">
+                  <input type="text" [(ngModel)]="default_IP" name="default_IP">
+                </label>
+              </section>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <section>
+                <div class="inline-group">
+                  <label class="radio">
+                    <input type="radio" name="DNS" checked="">
+                    <i></i>自动获得DNS服务器</label>
+                  <label class="radio">
+                    <input type="radio" name="DNS">
+                    <i></i>使用下面的DNS服务器</label>
+                </div>
+              </section>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-gray" >
+              <section>
+                <label class="label">首选DNS服务器：</label>
+                <label class="input">
+                  <input type="text" [(ngModel)]="dns" name="dns">
+                </label>
+              </section>
+            </div>
+            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-20 text-center">
+              <!--<button  type="button" class="btn btn-primary pd10" (click)="bnt_change()" style="padding: 4px 6px;">-->
+              <!--<i class="glyphicon glyphicon-ok"></i>-->
+              <!--{{serial_title}}-->
+              <!--</button>-->
+              <button  type="button" class="btn btn-primary pd10" (click)="submit_IP_setting()" style="padding: 4px 6px;">
+                <i class="glyphicon glyphicon-ok"></i>
+                保存
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </div>
   </div>
 </div>

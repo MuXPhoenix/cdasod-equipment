@@ -1142,6 +1142,13 @@ tr.table-color{
   color: #666;
 }
 
+
+.table-color{
+  background: #ffe79c!important;
+  color: #000!important;
+  border-bottom: 2px solid #ffc303;
+}
+
 /*表单底*/
 .dt-toolbar {
   display: block;
@@ -1637,9 +1644,9 @@ div.dataTables_paginate ul.pagination {
   height: 71px;
   border-bottom: 1px solid #eee!important;
   overflow: hidden;
-  padding: 0 30px;
+  padding:10px;
   border-width: 0;
-  min-height: 28px;
+  min-height:64px;
   background: #f4f4f4!important;
 }
 #extr-page #main-center {
@@ -1652,10 +1659,7 @@ div.dataTables_paginate ul.pagination {
 #extr-page #main-center {
   margin-top: 0!important;
 }
-#content {
-  padding: 10px 14px;
-  position: relative;
-}
+
 #extr-page .container {
   border: none;
 }

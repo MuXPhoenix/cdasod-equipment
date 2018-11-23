@@ -278,3 +278,8 @@
 .text-align-right,.text-right {
   text-align: right!important
 }
+
+/*边距*/
+.pd0-10{
+  padding:0 10px;
+}
